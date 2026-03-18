@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* Default light mode value */
+    --color-pattern-fg: rgba(0, 0, 0, 0.1);
+}
+
+/* Update the variable when the .dark class is present */
+.dark {
+    --color-pattern-fg: rgba(255, 255, 255, 0.1);
+}
+
+@utility no-scrollbar {
+
+    /* Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
