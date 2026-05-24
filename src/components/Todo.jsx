@@ -1,7 +1,8 @@
 import { Trash } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 
 function Todo() {
+    // const [todos, setTodos] = useState([])
     const todos = [
         { "id": 1, "task": "Buy groceries", "completed": false, "priority": "High", "deleteIcon": <Trash /> },
         { "id": 2, "task": "Finish report", "completed": true, "priority": "Medium", "deleteIcon": <Trash /> },
@@ -30,18 +31,18 @@ function Todo() {
 
     return (
         <div className='relative z-10 h-150 w-85 mt-20 p-5 flex flex-col gap-2 bg-white dark:bg-neutral-900 rounded-xl shadow-lg border-2 border-neutral-100 dark:border-neutral-800'>
-            <input type="text" className='border border-neutral-300 dark:border-neutral-800 dark:bg-black dark:text-white rounded-lg p-2' />
+            <input type="text" placeholder='Enter todo' className='border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-black dark:text-white rounded-lg p-2' />
             <div className='h-full w-full rounded-lg border border-neutral-300 dark:border-neutral-800 overflow-scroll sm:no-scrollbar'>
                 {todos.map((item, idx) => {
                     return (
-                        <div className='flex justify-between items-center p-2'>
+                        <div className='flex justify-between items-center p-2 bg-neutral-100 dark:bg-black'>
                             <li className='dark:text-white' key={idx}>{item.task}</li>
                             <button className='bg-red-500 p-1 rounded-md text-white' key={idx}>{item.deleteIcon}</button>
                         </div>
                     )
                 })}
             </div>
-            <button className='text-white bg-black dark:bg-emerald-500 py-3 rounded-lg font-semibold'>Add Todo</button>
+            <button className='text-white dark:text-black bg-black dark:bg-white py-3 rounded-lg font-semibold'>Add Todo</button>
         </div>
     )
 }

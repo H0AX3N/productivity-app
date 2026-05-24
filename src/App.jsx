@@ -1,6 +1,7 @@
 import { Moon, Sun } from "lucide-react";
 import Todo from "./components/Todo";
 import { useState } from "react";
+import LiveClock from "./components/LiveClock";
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -12,8 +13,18 @@ function App() {
   }
 
   return (
-    <div className='relative w-full h-full flex flex-col items-center bg-white dark:bg-black transition-colors duration-300'>
+    <div className='relative w-screen h-screen flex flex-col items-center justify-center bg-white dark:bg-black transition-colors duration-300'>
       <Pattern />
+      <div className="fixed top-0 z-12 w-full flex justify-between items-center px-6 py-4">
+        <LiveClock />
+        <button
+          onClick={handleThemeChange}
+          className="rounded-xl p-4 bg-neutral-300 dark:bg-neutral-800 dark:text-white"
+        >
+          {theme ? <Moon /> : <Sun />}
+        </button>
+      </div>
+
 
       <div className="fixed top-0 left-0 w-full h-32 z-11 pointer-events-none
         backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)]">
@@ -23,16 +34,9 @@ function App() {
         backdrop-blur-md [mask-image:linear-gradient(to_top,black_20%,transparent_100%)]">
       </div>
 
-      <button 
-        onClick={handleThemeChange} 
-        className="fixed top-5 right-6 z-12 ml-4 rounded-xl p-4 bg-neutral-300 dark:bg-neutral-800 dark:text-white"
-      >
-        {theme ? <Sun/> : <Moon/>}
-      </button>
-
       <Todo />
-      <Todo />
-      <Todo />
+      {/* <Todo />
+      <Todo /> */}
     </div>
   );
 }
